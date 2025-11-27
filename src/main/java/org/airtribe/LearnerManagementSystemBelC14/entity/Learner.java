@@ -15,6 +15,9 @@ public class Learner {
 
     private String learnerEmail;
 
+    public Learner() {
+    }
+
     public Learner(long learnerId, String learnerName, String learnerEmail) {
         this.learnerId = learnerId;
         this.learnerName = learnerName;
