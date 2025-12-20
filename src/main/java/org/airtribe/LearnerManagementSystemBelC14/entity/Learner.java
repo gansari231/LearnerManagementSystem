@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Learner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long learnerId;
+    private Long learnerId;
 
     private String learnerName;
 
