@@ -12,6 +12,9 @@ public class LearnerDTO {
 
     private List<CohortDTO> cohortDTO;
 
+    public LearnerDTO() {
+    }
+
     public LearnerDTO(Long learnerId, String learnerName, String learnerEmail, List<CohortDTO> cohortDTO) {
         this.learnerId = learnerId;
         this.learnerName = learnerName;

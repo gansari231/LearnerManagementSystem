@@ -8,6 +8,9 @@ public class CohortDTO {
 
     private String cohortDescription;
 
+    public CohortDTO() {
+    }
+
     public CohortDTO(Long cohortId, String cohortName, String cohortDescription) {
         this.cohortId = cohortId;
         this.cohortName = cohortName;
