@@ -9,5 +9,4 @@ public class LearnerManagementSystemBelC14Application {
 	public static void main(String[] args) {
 		SpringApplication.run(LearnerManagementSystemBelC14Application.class, args);
 	}
-
 }

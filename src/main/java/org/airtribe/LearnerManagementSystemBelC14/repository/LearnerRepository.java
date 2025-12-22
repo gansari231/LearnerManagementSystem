@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface LearnerRepository extends JpaRepository<Learner, Long> {
 
-    /*@Query("Select l from Learner l where l.learnerName = ?1")*/
     List<Learner> findByLearnerName(String learnerName);
 }
