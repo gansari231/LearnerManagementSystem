@@ -2,6 +2,10 @@ package org.airtribe.LearnerManagementSystemBelC14.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.util.List;
 
@@ -11,8 +15,11 @@ public class Learner {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long learnerId;
 
+    @NotBlank
+    @NotNull
     private String learnerName;
 
+    @Email
     private String learnerEmail;
 
     @ManyToMany(mappedBy = "learners")

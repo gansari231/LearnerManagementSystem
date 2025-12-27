@@ -1,6 +1,7 @@
 package org.airtribe.LearnerManagementSystemBelC14.controller;
 
 import org.airtribe.LearnerManagementSystemBelC14.entity.Cohort;
+import org.airtribe.LearnerManagementSystemBelC14.entity.Learner;
 import org.airtribe.LearnerManagementSystemBelC14.exceptions.CohortNotFoundException;
 import org.airtribe.LearnerManagementSystemBelC14.exceptions.LearnerNotFoundException;
 import org.airtribe.LearnerManagementSystemBelC14.service.LearnerManagementService;
@@ -29,6 +30,11 @@ public class CohortController {
     @PostMapping("/assignLearnersToCohorts")
     private Cohort assignLearnersToCohorts(@RequestParam("cohortId") Long cohortId, @RequestParam("learnerId") Long learnerId) throws CohortNotFoundException, LearnerNotFoundException {
         return  _learnerManagementService.assignLearnerToCohorts(cohortId, learnerId);
+    }
+
+    @PostMapping("/cohorts/{cohortId}/learners")
+    private Cohort assignAndCreateLearnersToCohorts(@PathVariable("cohortId") Long cohortId, @RequestBody List<Learner> learners) throws CohortNotFoundException {
+        return _learnerManagementService.assignAndCreateLearnersToCohorts(cohortId, learners);
     }
 
     @ExceptionHandler(CohortNotFoundException.class)

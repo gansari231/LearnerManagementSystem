@@ -1,6 +1,7 @@
 package org.airtribe.LearnerManagementSystemBelC14.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -14,8 +15,11 @@ public class Cohort {
 
     private String cohortDescription;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Learner> learners;
+
+    @ManyToOne
+    private Course course;
 
     public Cohort() {
     }
