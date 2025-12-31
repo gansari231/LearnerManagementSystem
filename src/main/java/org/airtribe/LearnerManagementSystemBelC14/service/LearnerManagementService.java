@@ -1,6 +1,7 @@
 package org.airtribe.LearnerManagementSystemBelC14.service;
 
 import jakarta.transaction.Transactional;
+import org.airtribe.LearnerManagementSystemBelC14.dto.PagedResponse;
 import org.airtribe.LearnerManagementSystemBelC14.entity.Cohort;
 import org.airtribe.LearnerManagementSystemBelC14.entity.Learner;
 import org.airtribe.LearnerManagementSystemBelC14.exceptions.CohortNotFoundException;
@@ -8,6 +9,10 @@ import org.airtribe.LearnerManagementSystemBelC14.exceptions.LearnerNotFoundExce
 import org.airtribe.LearnerManagementSystemBelC14.repository.CohortRepository;
 import org.airtribe.LearnerManagementSystemBelC14.repository.LearnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -80,5 +85,24 @@ public class LearnerManagementService {
         registeredLearners.addAll(learners);
         cohortOptional.get().setLearners(registeredLearners);
         return _cohortRepository.save(cohortOptional.get());
+    }
+
+    public PagedResponse<Cohort> fetchPaginatedCohorts(int pageSize, int pageNumber, String sortBy, Sort.Direction sortDir) {
+        Sort sort = Sort.by(sortDir, sortBy);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+
+        Page<Cohort> cohortPage = _cohortRepository.findAll(pageable);
+
+        return new PagedResponse<>(
+                cohortPage.getNumber(),
+                cohortPage.getSize(),
+                cohortPage.getTotalPages(),
+                cohortPage.getTotalElements(),
+                cohortPage.getContent(),
+                cohortPage.isFirst(),
+                cohortPage.isLast(),
+                cohortPage.hasPrevious(),
+                cohortPage.hasNext()
+                );
     }
 }
