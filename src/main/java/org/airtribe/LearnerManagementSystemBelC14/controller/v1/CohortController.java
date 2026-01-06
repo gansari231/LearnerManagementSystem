@@ -18,7 +18,7 @@ public class CohortController {
     private LearnerManagementService _learnerManagementService;
 
     @GetMapping("/cohorts")
-    public org.airtribe.LearnerManagementSystemBelC14.dto.PagedResponse<Cohort> getCohorts(
+    public PagedResponse<Cohort> getCohorts(
             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
             @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
             @RequestParam(value = "sortBy", defaultValue = "cohortId") String sortBy,
