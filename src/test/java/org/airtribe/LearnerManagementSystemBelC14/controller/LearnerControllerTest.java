@@ -41,7 +41,7 @@ public class LearnerControllerTest {
         Cohort cohort = new Cohort(1L, "Java", "Backend course", _learnerList);
         List<Cohort> cohorts = new ArrayList<>();
         cohorts.add(cohort);
-        _learnerList.add(new Learner(1L, "guf", "guf@gmail..com", cohorts));
+        _learnerList.add(new Learner(1L, "guf", "guf@gmail.com", cohorts));
 
     }
 
