@@ -7,6 +7,7 @@ import org.airtribe.LearnerManagementSystemBelC14.exceptions.LearnerNotFoundExce
 import org.airtribe.LearnerManagementSystemBelC14.service.LearnerManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class CohortController {
     @Autowired
     private LearnerManagementService _learnerManagementService;
 
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/cohorts")
     private Cohort createCohorts(@RequestBody Cohort cohort) {
        return _learnerManagementService.createCohort(cohort);
